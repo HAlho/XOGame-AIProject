@@ -40,7 +40,7 @@ void fillOption(myNode* origin) {//lets not call it root but rather origin (curr
 
 }
 
-void printCombination(myNode* origin) {
+void printCombination(myNode* origin) {//print in readable way
     std::cout << "number of children: " << origin->numChild << std::endl;
     std::cout << "Free spaces of " << origin->fs << " : ";
     for (int i = 0; i < MAX;i++) {
@@ -49,6 +49,7 @@ void printCombination(myNode* origin) {
     //if(origin->numChild>0)
     int j = 0;
     while (origin->children[j] != NULL) {
+        std::cout << std::endl;
         myNode* temp = origin->children[j];
         for (int i = 0; i < MAX;i++) {
             std::cout << temp->data[i] << " ";
@@ -58,17 +59,20 @@ void printCombination(myNode* origin) {
 }
 void fillCombinations(myNode* origin) {
     //fill
+
     for (int i = 0; i < MAX;i++) {
         if (origin->data[i] == 1) {
+            std::cout << "i is " << i << std::endl;
             //create child
             int child[MAX];
             for (int j = 0; j < MAX; j++) {
-                if (j = !i)
+                if (j != i)
                     child[j] = origin->data[j];
                 else
                     child[j] = turn;
             }
             //connect child
+            std::cout << "connecting child" << std::endl;
             origin->children[origin->numChild] = new myNode(child, (origin->fs) - 1);
             origin->numChild = (origin->numChild) + 1;
         }
@@ -80,6 +84,7 @@ void fillCombinations(myNode* origin) {
 int main() {
     // Write C++ code here
     std::cout << "Hello world!" << std::endl;
+
     int current[MAX] = { 0,0,4,4,1,0,1,1,4 }; //1 is empty, 0 is O , 4 is X
     int next[MAX] = { 0,0,4,4,4,0,1,1,4 };
 
