@@ -1,5 +1,8 @@
 // Online C++ compiler to run C++ program online
 #include <iostream>
+#include <stdio.h>
+#include <string>
+using namespace std;
 
 const int MAX = 9;//max grid which is 9
 int turn = 4;
@@ -48,7 +51,7 @@ void printCombination(myNode* origin) {//print in readable way
     }
     //if(origin->numChild>0)
     int j = 0;
-    while (origin->children[j] != NULL) {
+    while (j<origin->numChild) {
         std::cout << std::endl;
         myNode* temp = origin->children[j];
         for (int i = 0; i < MAX;i++) {
@@ -57,7 +60,7 @@ void printCombination(myNode* origin) {//print in readable way
         j++;
     }
 }
-void fillCombinations(myNode* origin) {
+myNode* fillCombinations(myNode* origin) {
     //fill
 
     for (int i = 0; i < MAX;i++) {
@@ -78,7 +81,7 @@ void fillCombinations(myNode* origin) {
         }
     }
     printCombination(origin);
-
+    return origin;
 }
 
 int main() {
@@ -94,7 +97,21 @@ int main() {
     std::cout << totalCombinations(freeSpaces)<<std::endl;*/
     myNode* root = new myNode(current, 3);
     root->children[1] = new myNode(next, 2);
-    fillCombinations(root);
+    root=fillCombinations(root);
+
+    std::string result="xxxxxxxxx";
+    std::cout << "the result is " << result << std::endl;
+
+    std::cout << "testing " << std::endl;
+
+    string c;
+    for (int i = 0; i < 9; i++) {
+        c = to_string(root->data[i]);
+        result[i] = c[0];
+       // std::cout << to_string(root->data[i]);
+    }
+    std::cout<<std::endl;
+    std::cout << "the result is " << result << std::endl;
 
     return 0;
 }
