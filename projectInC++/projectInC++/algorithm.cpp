@@ -94,7 +94,7 @@ void evaluateLeaf(myNode* cmb, int role) {//also add the AI role //evaluation do
     if (win) {
         if (role == 4)
             cmb->winX = 1;
-        else
+        if(role == 0)
             cmb->winO = 1;
     }
 }
@@ -106,12 +106,12 @@ void evaluate(myNode* cmb) {
 void saveNode(myNode* node) {
     cout << "hello"<<endl;
     ofstream fout;
-    string n = ",";
+    string n = " ";
     string o = "|";
-    fout.open("xoTree2.txt", ios::app);
+    fout.open("test.txt", ios::app);
     for (int i = 0;i < 9;i++)
         fout << node->data[i];
-    fout <<n<< node->fs<<n<<node->numChild<<n<<node->turn<<n<<node->winO<<n<<node->winX;
+    fout << node->fs<<node->numChild << node->turn << node->winO<< o << node->winX;
     fout << o;
         fout.close();
         for (int i = 0;i < node->numChild;i++)
@@ -166,10 +166,10 @@ int main() {
     // Write C++ code here
     std::cout << "Hello world!" << std::endl;
 
-    //int current[MAX] = { 0,0,4,4,1,0,1,1,4 }; //1 is empty, 0 is O , 4 is X
+    int current[MAX] = { 0,0,4,4,1,4,1,1,0 }; //1 is empty, 0 is O , 4 is X
     //int current[MAX] = { 0,0,4,4,1,1,1,1,1 }; //1 is empty, 0 is O , 4 is X
 
-      int current[MAX] = { 1,1,1,1,1,1,1,1,1 }; //all empty
+      //int current[MAX] = { 1,1,1,1,1,1,1,1,1 }; //all empty
       //int current[MAX] = { 1,1,1,1,1,1,1,0,4 };
 
     //int next[MAX] = { 0,0,4,4,4,0,1,1,4 };
@@ -178,7 +178,7 @@ int main() {
     int moves=6;
     freeSpaces = 9-moves;
     std::cout << totalCombinations(freeSpaces)<<std::endl;*/
-    myNode* root = new myNode(current, 9, 1); //his next turn is X
+    myNode* root = new myNode(current, 3, 1); //his next turn is X
     //root->children[1] = new myNode(next, 2, root->turn); //his next turn is the opposite of the parent's
     root=fillCombinations(root);
 

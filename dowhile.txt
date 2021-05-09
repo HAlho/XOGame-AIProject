@@ -1,0 +1,54 @@
+do{
+            root.children[i]=readNode(dataIs);
+            int j=0;
+            do{
+                root.children[i].children[j]=
+                    readNode(dataIs);
+                int k=0;
+                do{
+                    root.children[i].children[j].children[k]=
+                            readNode(dataIs);
+                    int a=0;
+                    do{
+                        root.children[i].children[j].children[k].children[a]=
+                                readNode(dataIs);
+                            int b=0;
+                        do{
+                            root.children[i].children[j].children[k].children[a].children[b]=
+                                    readNode(dataIs);
+                            int c=0;
+                            do{
+                                root.children[i].children[j].children[k].children[a].children[b].children[c]=
+                                        readNode(dataIs);
+                                int l=0;
+                                do{
+                                    root.children[i].children[j].children[k].children[a].children[b].children[c].children[l]=
+                                            readNode(dataIs);
+                                    int m=0;
+                                    do{
+                                        root.children[i].children[j].children[k].children[a].children[b].children[c].children[l].children[m]=
+                                                readNode(dataIs);
+                                        int n=0;
+                                        do{
+                                            root.children[i].children[j].children[k].children[a].children[b].children[c].children[l].children[m].children[n]=
+                                                    readNode(dataIs);
+                                            //int n=0;
+
+                                            n++;
+                                        }while(n<count-8);
+                                        m++;
+                                    }while(m<count-7);
+                                    l++;
+                                }while(l<count-6);
+                                c++;
+                            }while(c<count-5);
+                            b++;
+                        }while(b<count-4);
+                        a++;
+                    }while(a<count-3);
+                    k++;
+                }while(k<count-2);
+                j++;
+            }while(j<count-1);
+            i++;
+        }while(i<count);
